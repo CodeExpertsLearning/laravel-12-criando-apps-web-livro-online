@@ -34,21 +34,54 @@
       name="twitter:image"
       content="/resources/social.png"
     />
-  <link href="stylesheet.css?v=1.1" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="css/app.css?v=2.0" rel="stylesheet" />
   <link rel="icon" type="image/ico" href="/favicon.ico">
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
 
-<body dir="" class="markua010" id="top">
+<body dir="" class="markua010 bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased" id="top">
 
-<div class="topBuy">
-  <a href="https://book.codeexperts.com.br/" target="_blank">Adquira Sua Cópia Aqui</a>
-</div>
-  
-<div class="backToTop">
-  <a href="#top">Voltar ao Topo</a>
-</div>
-<div id="leanpub-toc">
-<h2>Índice</h2>
+<header class="fixed top-0 inset-x-0 z-50 h-14 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-[1600px] mx-auto px-4 h-full flex items-center justify-between gap-3">
+    <div class="flex items-center gap-2 min-w-0">
+      <button id="toc-toggle" type="button" class="lg:hidden flex-shrink-0 p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Abrir índice">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <a href="#top" class="font-semibold text-sm sm:text-base truncate">
+        <span class="text-laravel">Laravel 12</span>
+        <span class="hidden sm:inline text-slate-500 dark:text-slate-400"> · Criando Apps Web</span>
+      </a>
+    </div>
+    <div class="flex items-center gap-2 flex-shrink-0">
+      <button id="theme-toggle" type="button" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Alternar tema">
+        <svg data-icon="sun" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <svg data-icon="moon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+      <a href="https://pay.hotmart.com/Y98850515A?off=09dy6szb" target="_blank" rel="noopener" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white bg-laravel hover:bg-laravel-dark rounded-lg transition-colors shadow-sm">
+        Adquirir Minha Cópia	
+      </a>
+    </div>
+  </div>
+</header>
+
+<div id="toc-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden backdrop-blur-sm"></div>
+
+<div class="pt-14 max-w-[1600px] mx-auto flex min-h-screen">
+
+<aside id="leanpub-toc" class="fixed lg:sticky top-14 left-0 z-40 h-[calc(100vh-3.5rem)] w-72 max-w-[85vw] -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 overflow-y-auto shrink-0 p-4 lg:p-5 shadow-xl lg:shadow-none">
+  <div class="flex items-center justify-between mb-4 lg:mb-5">
+    <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 m-0">Índice</h2>
+    <button id="toc-close" type="button" class="lg:hidden p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Fechar índice">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
 <ol class="toc">
 <ul class='toc no-parts'>
   <li>
@@ -408,8 +441,9 @@
 </ul>
 
 </ol>
-</div>
-<div id="leanpub-main" class="markua010">
+</aside>
+
+<main id="leanpub-main" class="markua010 flex-1 min-w-0 px-4 sm:px-6 lg:px-10 xl:px-14 py-8 lg:py-12">
 <h1 id="leanpub-auto-quem-somos" class="chapter">Quem Somos</h1>
 
 <h2 id="leanpub-auto-nanderson-castro" class="section">Nanderson Castro</h2>
@@ -12570,6 +12604,14 @@
 
 <p>Sucesso!</p>
 
+</main>
+
 </div>
+
+<button id="back-to-top" type="button" class="fixed bottom-6 right-6 z-30 p-3 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl hover:text-red-600 dark:hover:text-red-400 transition-all duration-300 opacity-0 pointer-events-none" aria-label="Voltar ao topo">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</button>
+
+<script src="js/app.js?v=2.0"></script>
 </body>
 </html>
